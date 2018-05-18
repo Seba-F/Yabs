@@ -47,7 +47,7 @@ export default class Login extends React.Component {
       this.props.navigation.navigate('Ofrecer')
     }
   completeProfile = () => {
-      alert('no implementado')
+      this.props.navigation.navigate('Complete')
     }
 
   componentWillMount() {

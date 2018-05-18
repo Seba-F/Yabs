@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   AsyncStorage,
   Image,
-  ImageBackground
+  ImageBackground,
+  Picker
 } from 'react-native';
 import {StackNavigator} from 'react-navigation'
 import Constants from './common/ip';
@@ -44,7 +45,7 @@ export default class Login extends React.Component {
         lastname: this.state.lastname,
         phone: this.state.phone,
         password: this.state.password,
-        region: 'RM',
+        region: this.state.region,
 
       })
     })
@@ -85,6 +86,14 @@ export default class Login extends React.Component {
               <TextInput underlineColorAndroid='transparent' style={styles.input} 
                 placeholder='Numero de telefono' onChangeText={ (phone) => this.setState({phone})}>
                 </TextInput>
+
+              <Picker
+                selectedValue={this.state.region}
+                style={styles.regionpicker}
+                onValueChange={(region) => this.setState({region})}>
+                <Picker.Item label="1" value="1" />
+                <Picker.Item label="2" value="2" />
+              </Picker>
 
               <TextInput secureTextEntry= {true} underlineColorAndroid='transparent' 
                 style={styles.input} placeholder='password' onChangeText={ (password) => this.setState({password})}>
@@ -141,6 +150,12 @@ const styles = StyleSheet.create({
     },
     input: {
       fontSize: 16,
+      height: 40,
+      padding: 10,
+      marginBottom: 10,
+      backgroundColor: 'rgba(255, 255, 255, 1)',
+    },
+    regionpicker: {
       height: 40,
       padding: 10,
       marginBottom: 10,
