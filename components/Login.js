@@ -23,8 +23,6 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      lastname: '',
       phone: '',
       password: '',
 
@@ -40,14 +38,7 @@ export default class Login extends React.Component {
             <Text style={styles.logo}>- YABS -</Text>
 
             <View style={styles.inputContainer}>
-              <TextInput underlineColorAndroid='transparent' style={styles.input} 
-                placeholder='Nombre' onChangeText={ (name) => this.setState({name})}>
-                </TextInput>
-
-              <TextInput underlineColorAndroid='transparent' style={styles.input} 
-                placeholder='Apellido' onChangeText={ (lastname) => this.setState({lastname})}>
-                </TextInput>
-
+              
               <TextInput underlineColorAndroid='transparent' style={styles.input} 
                 placeholder='Numero de telefono' onChangeText={ (phone) => this.setState({phone})}>
                 </TextInput>
@@ -92,7 +83,7 @@ export default class Login extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: this.state.username,
+        phone: this.state.phone,
         password: this.state.password,
       })
     })
@@ -103,8 +94,9 @@ export default class Login extends React.Component {
       
 
       if (res.success === true) {
-
-        AsyncStorage.setItem('user', this.state.username)
+        alert(res.message)
+        //AsyncStorage.setItem('user', res.message)
+        AsyncStorage.setItem('user', 'username')
         this.props.navigation.navigate('Profile');
 
       }
