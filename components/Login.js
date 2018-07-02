@@ -16,8 +16,6 @@ import Constants from './common/ip';
 
 const x = Constants.ip
 
-
-
 export default class Login extends React.Component {
 
   constructor(props) {

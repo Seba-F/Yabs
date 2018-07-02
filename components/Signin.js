@@ -91,8 +91,21 @@ export default class Login extends React.Component {
                 selectedValue={this.state.region}
                 style={styles.regionpicker}
                 onValueChange={(region) => this.setState({region})}>
-                <Picker.Item label="1" value="1" />
-                <Picker.Item label="2" value="2" />
+                <Picker.Item label="XV de Arica y Parinacota" value="15" />
+                <Picker.Item label="I de Tarapaca" value="1" />
+                <Picker.Item label="II de Antofagastaa" value="2" />
+                <Picker.Item label="III de Atacama" value="3" />
+                <Picker.Item label="IV de Coquimbo" value="4" />
+                <Picker.Item label="V de Valparaiso" value="5" />
+                <Picker.Item label="VI del Libertador General Bernardo OHiggins" value="6" />
+                <Picker.Item label="VII del Maule" value="7" />
+                <Picker.Item label="VIII del Bío Bío" value="8" />
+                <Picker.Item label="IX de la Araucanía" value="9" />
+                <Picker.Item label="XIV de los Ríos" value="14" />
+                <Picker.Item label="X de los Lagos" value="10" />
+                <Picker.Item label="XI Aisén del General Carlos Ibáñez del Campo" value="11" />
+                <Picker.Item label="XII de Magallanes y Antártica Chilena" value="12" />
+                <Picker.Item label="Metropolitana de Santiago" value="RM" />
               </Picker>
 
               <TextInput secureTextEntry= {true} underlineColorAndroid='transparent' 
