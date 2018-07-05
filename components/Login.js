@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   AsyncStorage,
   Image,
-  ImageBackground
+  ImageBackground,
+  Dimensions,
 } from 'react-native';
 import {StackNavigator} from 'react-navigation'
 import BottomBar from './common/BottomBar';
@@ -182,6 +183,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'rgba(255,255,255,0.6)',
       height:null,
       width:null,
+      width: (Dimensions.get('window').width / 3),
 
     },
     registrarse: {

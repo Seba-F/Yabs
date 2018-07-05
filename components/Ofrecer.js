@@ -24,6 +24,7 @@ export default class Login extends React.Component {
     super(props);
     this.state = {
       rut: '195134570',
+      worker_id: '21',
       categoria: 'categoriaejemplo',
       titulo: 'nuevo titulo por defecto',
       descripcion: 'breve descripcion de la maravilla que se ofrece',
@@ -39,7 +40,7 @@ export default class Login extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        rut: this.state.rut,
+        worker_id: this.state.worker_id,
         categoria: this.state.categoria,
         titulo: this.state.titulo,
         descripcion: this.state.descripcion,

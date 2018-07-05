@@ -26,33 +26,6 @@ gochatlist = () => {
     //this.props.navigation.navigate('Chattabs');
   }
 
-// function Resultados(props) {
-//   let personas = props.personas;
-//   let ultimo = personas.pop()
-//   if (personas.length>0){
-//   return (
-    
-//     <ScrollView> 
-
-//       <View style={styles.bar}>
-//         <Text style={styles.people}>{ultimo}</Text>
-//         <TouchableOpacity onPress={this.goprofile}>
-//           <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
-//         </TouchableOpacity>
-//         <TouchableOpacity onPress={this.gochatlist}>
-//           <Icon name="chat" color='#000' size={25} style={{ padding:15}} />
-//         </TouchableOpacity>
-//       </View>
-//       <SinScroll personas={personas}/>
-      
-//     </ScrollView>
-
-//     );
-//   }
-//   else {
-//     return null
-//   }
-//   }
 
 function SinScroll(props) {
   let personas = props.personas;
@@ -62,16 +35,30 @@ function SinScroll(props) {
   return (
 
       <View>
-      <View style={styles.bar}>
-        <Text style={styles.people}>{ultimo}</Text>
-        <TouchableOpacity onPress={this.goprofile}>
-          <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.gochatlist}>
-          <Icon name="chat" color='#000' size={25} style={{ padding:15}} />
-        </TouchableOpacity>
-      </View>
+        <View style={styles.container}>
+          <View style={styles.emailRow}>
+            <View style={styles.emailColumn}>
+              <Text style={styles.emailText}>{ultimo}</Text>
+            </View>
+            <View style={styles.emailNameColumn}>
+                <Text style={styles.emailNameText}>{"Se pintan piscinas a domicilio"}</Text>
+            </View>
+          </View>
+          <TouchableOpacity onPress={this.goprofile}>
+            <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.gochatlist}>
+            <Icon name="chat" color='#000' size={25} style={{ padding:15}} />
+          </TouchableOpacity>
+        </View> 
+        <View style={styles.row}>
+          <View style={styles.separatorOffset} />
+          <View style={styles.separator} />
+        </View>
+
+
       <SinScroll personas={personas}/>
+
       </View>
 
     );
@@ -112,7 +99,7 @@ export default class Login extends React.Component {
         i = 0
         let a = this.state.ofertas;
         while (res.message[i]) {
-          a.push(res.message[i].titulo);
+          a.push(res.message[i].title);
           i += 1
         }
 
@@ -131,10 +118,20 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text style={styles.logo}> {this.props.navigation.state.params.title} </Text>
+
+          <View>
+           <View style={styles.titlebox}>
+              <Icon name="view-headline" color='#000' size={25} style={{ padding:15}} />
+                <View style={styles.emailRow}>
+                  <View style={styles.titlebox}>
+                    <Text style={styles.logo}> {this.props.navigation.state.params.title} </Text>
+                  </View>
+                </View>
+            <Icon name="add" color='#000' size={25} style={{ padding:15}} />
+          </View> 
+
         <ScrollView> 
-          <SinScroll personas={this.state.ofertas}/>        
+          <SinScroll personas={this.state.ofertas}/> 
         </ScrollView>         
       </View>
     );
@@ -142,13 +139,62 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
+     row: {
+    flexDirection: 'row',
+  },
+  separatorOffset: {
+    flex: 2,
+    flexDirection: 'row',
+  },
+  separator: {
+    flex: 8,
+    flexDirection: 'row',
+    borderColor: '#EDEDED',
+    borderWidth: 0.8,
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 0,
+    backgroundColor: '#fff',
+  },
+  emailColumn: {
+    marginLeft: 10,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 5,
+  },
+  emailNameColumn: {
+    marginLeft: 10,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  emailNameText: {
+    color: '#8E8E93',
+    fontSize: 14,
+    fontWeight: '200',
+  },
+  emailRow: {
+    flex: 8,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  emailText: {
+    color: 'black',
+    fontSize: 16,
+  },
+  iconRow: {
+    flex: 2,
+    justifyContent: 'center',
+  },
   logo:{
-    color:'#000',
-    fontSize:40,
-    margin:10,
-    marginLeft:20,
+    fontSize:20,
+    color: 'black',
     fontWeight:'500',
-    padding: 20,
+    padding: 5,
+    marginTop: 15,
+    alignSelf: 'center',
+
   },
   bar: {
     borderTopColor: '#9C9C9C',
@@ -161,5 +207,14 @@ const styles = StyleSheet.create({
     fontSize:25,
     padding: 10,
   },
+  titlebox:{
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    marginBottom: 5,
+    alignSelf: 'center',
+    marginLeft: 5,
+    marginRight: 5,
+    justifyContent: 'flex-start',
+  }
 
 });

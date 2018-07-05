@@ -1,4 +1,3 @@
- 
 import React from 'react';
 import {
   StyleSheet,
@@ -78,8 +77,8 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <View style = {styles.container}>
-
+      <View style = {styles.container2}>
+        <ScrollView>
         <ImageBackground style={styles.headerbackground} source={require('../img/background.jpg')}>
           <View style={styles.header}>
             <View style={styles.headerbar}>
@@ -94,51 +93,81 @@ export default class Login extends React.Component {
 
               <View style={styles.profileextraWrap}>
                 <TouchableOpacity onPress={this.completeProfile}>
-                  <Icon name="info-outline" color='#fff' size={25} style={{ padding:15, }} />
+                  <Icon name="settings" color='#fff' size={25} style={{ padding:15, }} />
                 </TouchableOpacity>
               </View>
             </View>
 
             <Text style={styles.name}>{this.state.username}</Text>
-            <Text style={styles.pos}>APP DEVELOPER</Text>
 
+            <View style={styles.headerbar}>
+              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
+              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
+              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
+              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
+              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
+            </View>
           
           </View>
 
         </ImageBackground>
 
+        <View style={styles.information}>
+            <View style={styles.container}>
+              <View style={styles.iconRow}>
+                  <Icon name="mail" color='green' size={25} style={{ padding:15, }} />
+              </View>
+              <View style={styles.emailRow}>
+                <View style={styles.emailColumn}>
+                  <Text style={styles.emailText}>{'seba@gmail.com'}</Text>
+                </View>
+                <View style={styles.emailNameColumn}>
+                    <Text style={styles.emailNameText}>{"Email"}</Text>
+                </View>
+              </View>
+            </View>
 
-        <ScrollView>
-        <View style={styles.photoGrid}>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img1.jpg')} />
+            <View style={styles.container}>
+              <View style={styles.iconRow}>
+                  <Icon name="phone" color='green' size={25} style={{ padding:15, }} />
+              </View>
+              <View style={styles.emailRow}>
+                <View style={styles.emailColumn}>
+                  <Text style={styles.emailText}>{'73776543'}</Text>
+                </View>
+                <View style={styles.emailNameColumn}>
+                    <Text style={styles.emailNameText}>{"Numero de telefono"}</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.separatorOffset} />
+              <View style={styles.separator} />
+            </View>
+
+
+
+
+            <View style={styles.container}>
+              <View style={styles.iconRow}>
+                  <Icon name="work" color='green' size={25} style={{ padding:15, }} />
+              </View>
+              <View style={styles.emailRow}>
+                <View style={styles.emailColumn}>
+                  <Text style={styles.emailText}>{'Clases particulares'}</Text>
+                </View>
+                <View style={styles.emailNameColumn}>
+                    <Text style={styles.emailNameText}>{"rubro"}</Text>
+                </View>
+              </View>
+            </View>
+
+
+
           </View>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img2.jpg')} />
-          </View>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img2.jpg')} />
-          </View>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img2.jpg')} />
-          </View>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img1.jpg')} />
-          </View>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img1.jpg')} />
-          </View>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img5.jpg')} />
-          </View>
-          <View style={styles.photoWrap}>
-            <Image style={styles.photo} source={require('../img/img4.jpg')} />
-          </View>
-          <TouchableOpacity onPress={this.gooptions} style={styles.plusview}>
-            <Image style={styles.photo} source={require('../img/plus.png')} />
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+        </ScrollView>
+
+        
 
         <View style={styles.bar}>
           <TouchableOpacity onPress={this.gosearch}>
@@ -165,7 +194,62 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    profileextraWrap: {
+  row: {
+    flexDirection: 'row',
+  },
+  separatorOffset: {
+    flex: 2,
+    flexDirection: 'row',
+  },
+  separator: {
+    flex: 8,
+    flexDirection: 'row',
+    borderColor: '#EDEDED',
+    borderWidth: 0.8,
+  },
+  information: {
+    backgroundColor: 'white',
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 0,
+    backgroundColor: '#fff',
+    marginBottom: 25,
+
+  },
+  emailColumn: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 5,
+  },
+  emailIcon: {
+    color: '#01C89E',
+    fontSize: 30,
+  },
+  emailNameColumn: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  emailNameText: {
+    color: '#8E8E93',
+    fontSize: 14,
+    fontWeight: '200',
+  },
+  emailRow: {
+    flex: 8,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  emailText: {
+    color: 'black',
+    fontSize: 16,
+  },
+  iconRow: {
+    flex: 2,
+    justifyContent: 'center',
+  },
+  profileextraWrap: {
 
     width: 60,
     height: 60,
@@ -187,7 +271,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  container: {
+  container2: {
     flex:1,
     backgroundColor: '#000'
   },
@@ -271,7 +355,7 @@ const styles = StyleSheet.create({
     borderWidth: 4,
   },
   name: {
-    marginTop: 20,
+    marginTop: 5,
     fontSize: 16,
     color: '#fff',
     fontWeight: 'bold',
