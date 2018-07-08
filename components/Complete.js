@@ -10,7 +10,7 @@ import {
   Image,
   ImageBackground
 } from 'react-native';
-import {StackNavigator} from 'react-navigation'
+
 import Constants from './common/ip';
 
 const x = Constants.ip
@@ -70,7 +70,7 @@ export default class Login extends React.Component {
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
           <View style={styles.content}>
 
-            <Text style={styles.logo}>- Completar perfil-</Text>
+            <Text style={styles.logo}>- Completar perfil -</Text>
 
             <View style={styles.inputContainer}>
               

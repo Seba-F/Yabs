@@ -15,9 +15,7 @@ import {
 
 } from 'react-native';
 
-import {StackNavigator} from 'react-navigation';
 
-import Header from './profile-widgets/Header';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class Login extends React.Component {

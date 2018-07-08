@@ -24,8 +24,7 @@ export default class Login extends React.Component {
       this.props.navigation.navigate('Search');
     }
   gochatlist = () => {
-    alert('No implementado')
-      //this.props.navigation.navigate('Chattabs');
+    this.props.navigation.navigate('YourChats');
     }
   goprofile = () => {
       this.props.navigation.navigate('Profile');

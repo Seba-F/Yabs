@@ -33,8 +33,7 @@ export default class Login extends React.Component {
       this.props.navigation.navigate('Search');
     }
   gochatlist = () => {
-    alert('no implementado')
-      //this.props.navigation.navigate('Chattabs');
+    this.props.navigation.navigate('YourChats');
     }
   goprofile = () => {
       this.props.navigation.navigate('Profile');
@@ -140,13 +139,12 @@ export default class Login extends React.Component {
                 </View>
               </View>
             </View>
+
+
             <View style={styles.row}>
               <View style={styles.separatorOffset} />
               <View style={styles.separator} />
             </View>
-
-
-
 
             <View style={styles.container}>
               <View style={styles.iconRow}>
@@ -162,7 +160,19 @@ export default class Login extends React.Component {
               </View>
             </View>
 
-
+            <View style={styles.container}>
+              <View style={styles.iconRow}>
+                  <Icon name="work" color='green' size={25} style={{ padding:15, }} />
+              </View>
+              <View style={styles.emailRow}>
+                <View style={styles.emailColumn}>
+                  <Text style={styles.emailText}>{'Tatuador'}</Text>
+                </View>
+                <View style={styles.emailNameColumn}>
+                    <Text style={styles.emailNameText}>{"rubro"}</Text>
+                </View>
+              </View>
+            </View>
 
           </View>
         </ScrollView>

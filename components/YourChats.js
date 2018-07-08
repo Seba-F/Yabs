@@ -1,4 +1,4 @@
-/*import React from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,16 +14,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Constants from './common/ip';
 
 const x = Constants.ip
-
-goprofile = () => {
-    alert('Aqu')
-    //this.props.navigation.navigate('OtherProfile');
-  }
-
-gochatlist = () => {
-  alert('Aqui va a iniciar una conversación')
-    //this.props.navigation.navigate('Chattabs');
-  }
 
 
 function SinScroll(props) {
@@ -91,7 +81,7 @@ export default class Login extends React.Component {
               <Icon name="view-headline" color='#000' size={25} style={{ padding:15}} />
                 <View style={styles.emailRow}>
                   <View style={styles.titlebox}>
-                    <Text style={styles.logo}> {'Piscinas'} </Text>
+                    <Text style={styles.logo}> {'Chats'} </Text>
                   </View>
                 </View>
             <Icon name="add" color='#000' size={25} style={{ padding:15}} />
@@ -184,4 +174,4 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   }
 
-});*/
+});
