@@ -91,7 +91,7 @@ export default class Login extends React.Component {
                 placeholder='Titulo' onChangeText={ (titulo) => this.setState({titulo})}></TextInput>
 
               <TextInput underlineColorAndroid='transparent' style={styles.descripcionInput} 
-                placeholder='Enter here the content you´d like to offer' onChangeText={ (descripcion) => this.setState({descripcion})}></TextInput>
+                placeholder='Enter here the content you´d like to offer' multiline={true} onChangeText={ (descripcion) => this.setState({descripcion})}></TextInput>
 
             </View>
 
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     },      
     descripcionInput: {
       fontSize: 16,
-      height: 100,
+      height: 50,
       padding: 10,
       marginBottom: 10,
       backgroundColor: 'rgba(255, 255, 255, 1)',

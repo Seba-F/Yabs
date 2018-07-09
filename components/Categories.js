@@ -36,7 +36,7 @@ function SinScroll(props) {
           <TouchableOpacity onPress={() => navigation.navigate('OtherProfile')}>
             <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => alert('aqui vas a poder iniciar una conversacion')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
             <Icon name="chat" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
         </View> 

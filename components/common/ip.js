@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Constants = {
-  ip: '172.20.10.3',
+  ip: '192.168.0.31',
   OTHER_THINGS: 'whatever'
 }
 
