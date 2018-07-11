@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import Constants from './common/ip';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const x = Constants.ip
 
@@ -72,25 +73,49 @@ export default class Login extends React.Component {
 
             <Text style={styles.logo}>- Completar perfil -</Text>
 
-            <View style={styles.inputContainer}>
+            
+
               
-              <TextInput underlineColorAndroid='transparent' style={styles.input} 
-                placeholder='Rut' onChangeText={ (name) => this.setState({name})}>
-                </TextInput>
+              <View style={styles.inputContainer}>
+              
+                <TextInput underlineColorAndroid='transparent' style={styles.input} 
+                  placeholder='Rut...                 ' onChangeText={ (name) => this.setState({name})}>
+                  </TextInput>
 
-            </View>
-
+              
               <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Actualizar rut</Text>
+              <Text style={styles.buttonText}>Actualizar</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Subir carnet identidad</Text>
+              </View>
+
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>Seleccionar {"\n"} Carnet Identidad</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Subir antecedentes</Text>
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
+                <Icon name="file-upload" color='black' size={45} style={{ padding:15, }} />
+                
               </TouchableOpacity>
+              <Icon name="check" color='green' size={35} style={{ padding:15, }} />
+              </View>
+
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>  Seleccionar {"\n"} Antecedentes  </Text>
+              </TouchableOpacity>
+
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
+                <Icon name="file-upload" color='black' size={45} style={{ padding:15, }} />
+              </TouchableOpacity>
+              <Icon name="check" color='green' size={35} style={{ padding:15, }} />
+              </View>
+
+
+
+
+              
 
           </View>
         
