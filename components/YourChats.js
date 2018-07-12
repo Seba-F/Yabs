@@ -18,6 +18,7 @@ const x = Constants.ip
 
 function SinScroll(props) {
   let personas = props.personas;
+  let navigation = props.navigation
     
   if (personas.length>0){
     let ultimo = personas.pop()
@@ -33,10 +34,10 @@ function SinScroll(props) {
                 <Text style={styles.emailNameText}>{"Se pintan piscinas a domicilio"}</Text>
             </View>
           </View>
-          <TouchableOpacity onPress={this.goprofile}>
+          <TouchableOpacity onPress={() => navigation.navigate('OtherProfile')}>
             <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.gochatlist}>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
             <Icon name="chat" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
         </View> 
@@ -88,7 +89,7 @@ export default class Login extends React.Component {
           </View> 
 
         <ScrollView> 
-          <SinScroll personas={this.state.ofertas}/> 
+          <SinScroll navigation={this.props.navigation} personas={this.state.ofertas}/> 
         </ScrollView>         
       </View>
     );

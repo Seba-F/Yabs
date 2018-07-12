@@ -100,11 +100,13 @@ export default class Login extends React.Component {
             <Text style={styles.name}>{this.state.username}</Text>
 
             <View style={styles.headerbar}>
-              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
-              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
-              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
-              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
-              <Icon name="star" color='yellow' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+
+
             </View>
           
           </View>
@@ -114,11 +116,11 @@ export default class Login extends React.Component {
         <View style={styles.information}>
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="mail" color='green' size={25} style={{ padding:15, }} />
+                  <Icon name="mail" color='black' size={25} style={{ padding:15, }} />
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{'seba@gmail.com'}</Text>
+                  <Text style={styles.emailText}>{'seba@yabs.com'}</Text>
                 </View>
                 <View style={styles.emailNameColumn}>
                     <Text style={styles.emailNameText}>{"Email"}</Text>
@@ -128,14 +130,28 @@ export default class Login extends React.Component {
 
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="phone" color='green' size={25} style={{ padding:15, }} />
+                  <Icon name="phone" color='black' size={25} style={{ padding:15, }} />
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
                   <Text style={styles.emailText}>{'73776543'}</Text>
                 </View>
                 <View style={styles.emailNameColumn}>
-                    <Text style={styles.emailNameText}>{"Numero de telefono"}</Text>
+                    <Text style={styles.emailNameText}>{"Casa"}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.container}>
+              <View style={styles.iconRow}>
+                  <Icon name="phone" color='black' size={25} style={{ padding:15, }} />
+              </View>
+              <View style={styles.emailRow}>
+                <View style={styles.emailColumn}>
+                  <Text style={styles.emailText}>{'77675433'}</Text>
+                </View>
+                <View style={styles.emailNameColumn}>
+                    <Text style={styles.emailNameText}>{"Oficina"}</Text>
                 </View>
               </View>
             </View>
@@ -148,7 +164,7 @@ export default class Login extends React.Component {
 
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="work" color='green' size={25} style={{ padding:15, }} />
+                  <Icon name="work" color='black' size={25} style={{ padding:15, }} />
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
@@ -162,7 +178,7 @@ export default class Login extends React.Component {
 
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="work" color='green' size={25} style={{ padding:15, }} />
+                  <Icon name="work" color='black' size={25} style={{ padding:15, }} />
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
@@ -283,12 +299,12 @@ const styles = StyleSheet.create({
   },
   container2: {
     flex:1,
-    backgroundColor: '#000'
+    backgroundColor: '#fff'
   },
   bar: {
     borderTopColor: '#9C9C9C',
-    borderTopWidth: 4,
-    backgroundColor: '#F6F6F6',
+    borderTopWidth: 2,
+    backgroundColor: '#fff',
     flexDirection: 'row',
     
   },

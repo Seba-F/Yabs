@@ -13,6 +13,7 @@ import {
 
 import Constants from './common/ip';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import BottomBar from './common/BottomBar';
 
 const x = Constants.ip
 
@@ -30,7 +31,21 @@ export default class Login extends React.Component {
       region: '',
     }
   }
-
+  gosearch = () => {
+      this.props.navigation.navigate('Search');
+    }
+  gochatlist = () => {
+    this.props.navigation.navigate('YourChats');
+    }
+  goprofile = () => {
+      this.props.navigation.navigate('Profile');
+    }
+   goofrecer = () => {
+      this.props.navigation.navigate('Ofrecer')
+    }
+  completeProfile = () => {
+      this.props.navigation.navigate('Complete')
+    }
   create = () => {
 
 
@@ -90,38 +105,53 @@ export default class Login extends React.Component {
               </View>
 
               <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Seleccionar {"\n"} Carnet Identidad</Text>
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
+                <Text style={styles.buttonText}>Seleccionar{"\n"}Carnet Identidad</Text>
               </TouchableOpacity>
 
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-                <Icon name="file-upload" color='black' size={45} style={{ padding:15, }} />
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
+                <Icon name="arrow-upward" color='#000' size={40} style={{ padding:1, }} />
                 
               </TouchableOpacity>
-              <Icon name="check" color='green' size={35} style={{ padding:15, }} />
+              <Icon name="check-circle" color='#fff' size={40} style={{ padding:20, }} />
               </View>
 
               <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>  Seleccionar {"\n"} Antecedentes  </Text>
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
+                <Text style={styles.buttonText}> Seleccionar{"\n"}  Antecedentes   </Text>
               </TouchableOpacity>
 
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-                <Icon name="file-upload" color='black' size={45} style={{ padding:15, }} />
+                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
+                <Icon name="arrow-upward" color='#000' size={40} style={{ padding:1, }} />
               </TouchableOpacity>
-              <Icon name="check" color='green' size={35} style={{ padding:15, }} />
-              </View>
+              <Icon name="check-circle" color='#fff' size={40} style={{ padding:20, }} />
+              </View> 
+            </View>
+
+            </ImageBackground>
+    
+       
 
 
+        <View style={styles.bar}>
+            <TouchableOpacity onPress={this.gosearch}>
+              <Icon name="search" color='#000' size={30} style={{ padding:25}} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.goprofile}>
+              <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.goofrecer}>
+               <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.gochatlist}>
+              <Icon name="chat" color='#000' size={30} style={{ padding:25}} />
+             </TouchableOpacity>
+             <TouchableOpacity onPress={this.gosearch}>
+              <Icon name="more-vert" color='#000' size={30} style={{ padding:25}} />
+             </TouchableOpacity>
+        </View>   
+      </View>                                                  
 
-
-              
-
-          </View>
-        
-        </ImageBackground>
-      
-      </View>
     );
   }
 }
@@ -202,6 +232,30 @@ const styles = StyleSheet.create({
       fontSize: 14,
       fontWeight: 'bold',
       textAlign: 'center'
-    }
+    },
+    bar: {
+    borderTopColor: '#9C9C9C',
+    borderTopWidth: 2,
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    
+    },
+    barItem: {
+      flex: 1,
+      padding: 18,
+      alignItems: 'center'
+
+    },
+    barTop: {
+      color: '#000',
+      fontSize:20,
+      fontWeight: 'bold',
+      fontStyle: 'italic',
+    },
+    barBottom: {
+      color: '#000',
+      fontSize: 8,
+      fontWeight: 'bold',
+    },
 })
 

@@ -14,6 +14,7 @@ import {
 import {StackNavigator} from 'react-navigation'
 import BottomBar from './common/BottomBar';
 import Constants from './common/ip';
+/*import firebase from 'firebase';*/
 
 const x = Constants.ip
 
