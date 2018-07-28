@@ -34,6 +34,9 @@ function SinScroll(props) {
                 <Text style={styles.emailNameText}>{"Se pintan piscinas a domicilio"}</Text>
             </View>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Evaluate')}>
+            <Icon name="star" color='#000' size={25} style={{ padding:15}} />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('OtherProfile')}>
             <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
@@ -79,7 +82,7 @@ export default class Login extends React.Component {
     return (
       <View>
            <View style={styles.titlebox}>
-              <Icon name="view-headline" color='#000' size={25} style={{ padding:15}} />
+              <Icon name="view-headline" color='#000' size={25} style={{ padding:15 }} />
                 <View style={styles.emailRow}>
                   <View style={styles.titlebox}>
                     <Text style={styles.logo}> {'Chats'} </Text>

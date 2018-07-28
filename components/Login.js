@@ -35,7 +35,11 @@ export default class Login extends React.Component {
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
           <View style={styles.content}>
 
-            <Text style={styles.logo}>- YABS -</Text>
+            <View  style={{flexDirection: 'row'}}>
+
+            <Text style={styles.logo}> YABS  </Text>
+                            <Image style={styles.logoimg} source={require('../img/whitehelmet.png')} />
+            </View>
 
             <View style={styles.inputContainer}>
               
@@ -142,6 +146,11 @@ const styles = StyleSheet.create({
       textShadowOffset: {width: 2, height: 2},
       textShadowRadius: 15,
       marginBottom: 20,
+    },
+    logoimg: {
+      marginBottom: 20,
+      height:50,
+      width: 50
     },
     inputContainer: {
       margin: 20,

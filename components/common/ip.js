@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Constants = {
-  ip: '-----',
+  ip: 'x',
   OTHER_THINGS: 'whatever'
 }
 

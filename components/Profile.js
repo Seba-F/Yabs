@@ -105,8 +105,6 @@ export default class Login extends React.Component {
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
-
-
             </View>
           
           </View>
