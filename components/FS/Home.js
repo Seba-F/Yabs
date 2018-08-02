@@ -1,4 +1,4 @@
-/*import React from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,6 @@ export default class Home extends React.Component {
   state = {
     name: '',
   };
-
   render() {
     return (
       <View style={styles.container}>
@@ -30,9 +29,7 @@ export default class Home extends React.Component {
           value={this.state.name}
         />
         <TouchableOpacity
-          onPress={() => {
-            alert('hshs')
-          }}
+          onPress={() => alert('funcion borrada')}
         >
           <Text style={styles.label}>
             Next
@@ -55,4 +52,4 @@ const styles = StyleSheet.create({
     height: 40,
     marginLeft: 15,
   },
-});*/
+});

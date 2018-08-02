@@ -146,46 +146,15 @@ export default class Login extends React.Component {
     this.state = {
       evaluador_id: 3,
       rated_id: 21,
-      commment: '',
+      comment: '',
       stars: 1,
     }
   }
 
-  evaluate = () => {
-
-    fetch('http://'+x+':3000/rating/insert', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        rated_id: this.state.rated_id,
-        evaluador_id: this.state.evaluador_id,
-        stars: this.state.stars,
-        comment: this.state.comment,
-      })
-    })
-
-    .then((response) => response.json())
-    .then((res) => {
-
-
-
-      if (res.success === true) {
-        //alert(res.message)
-        alert('se ha insertado una evaluacion')
-        //this.props.navigation.navigate('Profile');
-
-      }
-      else {
-        alert('not success')
-      }
-    })
-    .done()
-    }
+ 
 
   render() {
+
     return (
       <View style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
@@ -218,6 +187,38 @@ export default class Login extends React.Component {
       </View>
     );
   }
+      evaluate = () => {
+
+      fetch('http://'+x+':3000/ratings/insert', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          rated_id: this.state.rated_id,
+          evaluador_id: this.state.evaluador_id,
+          stars: this.state.stars,
+          comment: this.state.comment,
+        })
+      })
+
+      .then((response) => response.json())
+      .then((res) => {
+
+
+
+        if (res.success === true) {
+
+          this.props.navigation.navigate('YourChats') 
+
+        }
+        else {
+          alert('not success')
+        }
+      })
+      .done()
+      }
 }
 
 const styles = StyleSheet.create({

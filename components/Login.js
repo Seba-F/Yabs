@@ -98,9 +98,8 @@ export default class Login extends React.Component {
       
 
       if (res.success === true) {
-        alert(res.message)
-        //AsyncStorage.setItem('user', res.message)
-        AsyncStorage.setItem('user', 'username')
+        alert(res.message[1])
+        AsyncStorage.setItem('user', res.message[1]+' '+res.message[2])
         this.props.navigation.navigate('Profile');
 
       }

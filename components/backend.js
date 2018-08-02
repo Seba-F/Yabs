@@ -1,4 +1,4 @@
-/*import firebase from 'firebase';
+import firebase from 'firebase';
 
 class Backend {
   uid = '';
@@ -63,4 +63,4 @@ class Backend {
   }
 }
 
-export default new Backend();*/
+export default new Backend();

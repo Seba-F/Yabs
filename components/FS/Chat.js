@@ -1,7 +1,7 @@
-/*import React from 'react';
+import React from 'react';
 
 import { GiftedChat } from 'react-native-gifted-chat';
-
+import Backend from '../Backend';
 
 export default class Chat extends React.Component {
   state = {
@@ -9,13 +9,13 @@ export default class Chat extends React.Component {
   };
   componentWillMount() {
 
-  }*/
- /* render() {
+  }
+  render() {
     return (
       <GiftedChat
         messages={this.state.messages}
         onSend={(message) => {
-          alert('d')
+          Backend.sendMessage(message);
         }}
         user={{
           _id: Backend.getUid(),
@@ -44,4 +44,4 @@ Chat.defaultProps = {
 
 Chat.propTypes = {
   name: React.PropTypes.string,
-};*/
+};

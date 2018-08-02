@@ -54,7 +54,7 @@ export default class Login extends React.Component {
     .then((res) => {
 
       if (res.success === true) {
-        AsyncStorage.setItem('user', this.state.name)
+        AsyncStorage.setItem('user', this.state.name+' '+this.state.lastname)
         this.props.navigation.navigate('Profile');
 
       }
