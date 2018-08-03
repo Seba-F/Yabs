@@ -95,7 +95,7 @@ export default class Login extends React.Component {
 
               <View style={styles.profileextraWrap}>
                 <TouchableOpacity onPress={this.changemode}>
-                  <Image style={styles.changemode} source={require('../img/bluehelmet.png')} style={{height:70, width:70}}/>
+                  <Image style={styles.changemode} source={require('../img/bluehelmet.png')} style={{height:40, width:40}}/>
                 </TouchableOpacity>
               </View>
             </View>
@@ -193,16 +193,18 @@ export default class Login extends React.Component {
 
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="history" color='black' size={25} style={{ padding:15, }} />
+                <Icon name="history" color='black' size={25} style={{ padding:15, }} />
               </View>
-              <View style={styles.emailRow}>
-                <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{'Trabajos realizados'}</Text>
+                <View style={styles.emailRow}>
+                  <TouchableOpacity onPress={this.gosearch}>
+                    <View style={styles.emailColumn}>
+                      <Text style={styles.emailText}>{'Trabajos contratados'}</Text>
+                    </View>
+                    <View style={styles.emailNameColumn}>
+                      <Text style={styles.emailNameText}>{"Historial"}</Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
-                <View style={styles.emailNameColumn}>
-                    <Text style={styles.emailNameText}>{"Historial"}</Text>
-                </View>
-              </View>
             </View>
 
           </View>
@@ -292,12 +294,12 @@ const styles = StyleSheet.create({
   },
   profileextraWrap: {
 
-    width: 100,
-    height: 100,
+    width: 57,
+    height: 57,
     borderRadius: 55,
-    borderColor: 'rgba(0,0,0,0.1)',
+    borderColor: 'rgba(0,0,0,0.4)',
     borderWidth: 2,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     alignItems: 'center',
     justifyContent: 'center'
   },
