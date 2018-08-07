@@ -95,7 +95,7 @@ export default class Login extends React.Component {
 
               <View style={styles.profileextraWrap}>
                 <TouchableOpacity onPress={this.changemode}>
-                  <Image style={styles.changemode} source={require('../img/bluehelmet.png')} style={{height:40, width:40}}/>
+                  <Image style={styles.changemode} source={require('../img/whitehelmet.png')} style={{height:40, width:40}}/>
                 </TouchableOpacity>
               </View>
             </View>

@@ -10,6 +10,8 @@ import {
   SectionList,
   AsyncStorage,
   ScrollView,
+  ImageBackground,
+  Imageback
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Constants from './common/ip';
@@ -33,6 +35,9 @@ function SinScroll(props) {
                 <Text style={styles.emailNameText}>{"Se pintan piscinas a domicilio"}</Text>
             </View>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Evaluate')}>
+            <Icon name="star" color='#000' size={25} style={{ padding:15}} />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('OtherProfile')}>
             <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
@@ -46,7 +51,7 @@ function SinScroll(props) {
         </View>
 
 
-      <SinScroll personas={personas}/>
+      <SinScroll personas={personas} navigation={navigation}/>
 
       </View>
 
@@ -108,8 +113,9 @@ export default class Login extends React.Component {
   
   render() {
     return (
+      <View style={styles.container2}>
+        <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
 
-          <View>
            <View style={styles.titlebox}>
               <Icon name="view-headline" color='#000' size={25} style={{ padding:15}} />
                 <View style={styles.emailRow}>
@@ -120,16 +126,69 @@ export default class Login extends React.Component {
             <Icon name="add" color='#000' size={25} style={{ padding:15}}/>
           </View> 
 
-        <ScrollView> 
-          <SinScroll navigation={this.props.navigation} personas={this.state.ofertas}/>
-        </ScrollView>       
+
+          <ScrollView> 
+            <SinScroll navigation={this.props.navigation} personas={this.state.ofertas}/>
+          </ScrollView>  
+
+        </ImageBackground>
+
+
+      <View style={styles.bar}>
+        <TouchableOpacity onPress={this.gosearch}>
+          <Icon name="search" color='#000' size={30} style={{ padding:25}} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.goprofile}>
+          <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.goofrecer}>
+          <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.gochatlist}>
+          <Icon name="chat" color='#000' size={30} style={{ padding:25}} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.gosearch}>
+          <Icon name="more-vert" color='#000' size={30} style={{ padding:25}} />
+        </TouchableOpacity>
       </View>
+    </View>
     );
   }
+  gosearch = () => {
+      this.props.navigation.navigate('Search');
+    }
+  gochatlist = () => {
+    this.props.navigation.navigate('YourChats');
+    }
+  goprofile = () => {
+      this.props.navigation.navigate('Profile');
+    }
+   goofrecer = () => {
+      this.props.navigation.navigate('Ofrecer')
+    }
+  completeProfile = () => {
+      this.props.navigation.navigate('Complete')
+    }
 }
 
 const styles = StyleSheet.create({
-     row: {
+      backgroundImage: {
+      flex: 1,
+      alignSelf: 'stretch',
+      width: null,
+      justifyContent: 'center',
+    },
+  container2: {
+    flex: 1,
+    backgroundColor: '#2896d3',
+    },
+  bar: {
+    borderTopColor: '#9C9C9C',
+    borderTopWidth: 2,
+    backgroundColor: '#E0E0E0',
+    flexDirection: 'row',
+  },
+  row: {
     flexDirection: 'row',
   },
   separatorOffset: {
@@ -200,10 +259,10 @@ const styles = StyleSheet.create({
   titlebox:{
     flexDirection: 'row',
     backgroundColor: '#fff',
-    marginBottom: 5,
+    marginBottom: 0,
     alignSelf: 'center',
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 0,
+    marginRight: 0,
     justifyContent: 'flex-start',
   }
 

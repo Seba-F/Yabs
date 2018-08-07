@@ -183,11 +183,43 @@ export default class Login extends React.Component {
           </View>
         </ImageBackground>
 
-      
+        <View style={styles.bar}>
+          <TouchableOpacity onPress={this.gosearch}>
+            <Icon name="search" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.goprofile}>
+            <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.goofrecer}>
+            <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.gochatlist}>
+            <Icon name="chat" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.gosearch}>
+            <Icon name="more-vert" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+        </View>
+
       </View>
     );
   }
-      evaluate = () => {
+  gosearch = () => {
+      this.props.navigation.navigate('Search');
+    }
+  gochatlist = () => {
+    this.props.navigation.navigate('YourChats');
+    }
+  goprofile = () => {
+      this.props.navigation.navigate('Profile');
+    }
+   goofrecer = () => {
+      this.props.navigation.navigate('Ofrecer')
+    }
+  completeProfile = () => {
+      this.props.navigation.navigate('Complete')
+    }
+    evaluate = () => {
 
       fetch('http://'+x+':3000/ratings/insert', {
         method: 'POST',
@@ -222,6 +254,12 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    bar: {
+    borderTopColor: '#9C9C9C',
+    borderTopWidth: 2,
+    backgroundColor: '#E0E0E0',
+    flexDirection: 'row',
+  },
     container: {
     flex: 1,
     backgroundColor: '#2896d3',

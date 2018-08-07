@@ -26,6 +26,8 @@ export default class Login extends React.Component {
     super(props);
     this.state = {
       username: 'Anonimo',
+      mail: '',
+      phone: 'blabla',
     }
   }
 
@@ -61,25 +63,12 @@ export default class Login extends React.Component {
   }
 
   async loadusername() {
-    
-
-    try {
-      const user = await AsyncStorage.getItem('user');      
-
-      if (user != null){
-        this.setState({
-        username: user,
-      
-      });
-      }
-      
-
-    } catch (e) {
-      console.log('Error fetching user', e);
+      const user = await AsyncStorage.getItem('user');
+      const phone = await AsyncStorage.getItem('phone');      
       this.setState({
-          username: 'Cristian',
-        });
-    }
+        username: user,
+        phone: phone,
+      });
   }
 
   render() {
@@ -120,6 +109,8 @@ export default class Login extends React.Component {
         </ImageBackground>
 
         <View style={styles.information}>
+
+
             <View style={styles.container}>
               <View style={styles.iconRow}>
                   <Icon name="person" color='black' size={25} style={{ padding:15, }} />
@@ -140,7 +131,7 @@ export default class Login extends React.Component {
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{'77675433'}</Text>
+                  <Text style={styles.emailText}>{this.state.phone}</Text>
                 </View>
                 <View style={styles.emailNameColumn}>
                     <Text style={styles.emailNameText}>{"Telefono"}</Text>
