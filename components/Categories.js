@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
   titlebox:{
     flexDirection: 'row',
     backgroundColor: '#fff',
-    marginBottom: 0,
+    marginBottom: 1,
     alignSelf: 'center',
     marginLeft: 0,
     marginRight: 0,
