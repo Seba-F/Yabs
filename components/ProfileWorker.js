@@ -293,7 +293,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   profileextraWrap: {
-
     width: 57,
     height: 57,
     borderRadius: 55,
@@ -310,8 +309,8 @@ const styles = StyleSheet.create({
   },
   profileextraWrapInvisible: {
 
-    width: 100,
-    height: 100,
+    width: 57,
+    height: 57,
     borderRadius: 55,
     borderColor: 'rgba(0,0,0,0)',
     borderWidth: 2,
