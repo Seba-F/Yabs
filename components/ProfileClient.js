@@ -18,7 +18,10 @@ import {
 import {StackNavigator} from 'react-navigation';
 
 import Header from './profile-widgets/Header';
+import Constants from './common/ip';
+import StarRender from './common/star_render';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+const x = Constants.ip
 
 export default class Login extends React.Component {
 
@@ -28,6 +31,8 @@ export default class Login extends React.Component {
       username: 'Anonimo',
       mail: '',
       phone: 'blabla',
+      stars: 1,
+      user_id: 21,
     }
   }
 
@@ -62,6 +67,35 @@ export default class Login extends React.Component {
     this.props.navigation.navigate('ContractedHistory')
   }
 
+   starfunction = () => {
+
+      fetch('http://'+x+':3000/ratings/obtener', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          rated_id: this.state.user_id,
+        })
+      })
+
+      .then((response) => response.json())
+      .then((res) => {
+
+
+
+        if (res.success === true) {
+          alert(res.message)
+
+        }
+        else {
+          alert('not success')
+        }
+      })
+      .done()
+      }
+
   async loadusername() {
       const user = await AsyncStorage.getItem('user');
       const phone = await AsyncStorage.getItem('phone');      
@@ -95,14 +129,10 @@ export default class Login extends React.Component {
             </View>
 
             <Text style={styles.name}>{this.state.username}</Text>
+            <TouchableOpacity onPress={this.starfunction}>
+              <StarRender stars={this.state.stars}/>
+            </TouchableOpacity>
 
-            <View style={styles.headerbar}>
-              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
-              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
-              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
-              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
-              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
-            </View>
           
           </View>
 

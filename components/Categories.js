@@ -89,7 +89,7 @@ export default class Login extends React.Component {
 
       if (res.success === true) {
         
-
+        //tambien hay que darlee el user_id y el name
         i = 0
         let a = this.state.ofertas;
         while (res.message[i]) {
