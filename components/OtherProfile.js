@@ -1,4 +1,3 @@
- 
 import React from 'react';
 import {
   StyleSheet,
@@ -12,47 +11,131 @@ import {
   Dimensions,
   ScrollView,
   Image,
-  ImageBackground,
+  ImageBackground
+
 } from 'react-native';
 
 import {StackNavigator} from 'react-navigation';
 
-
+import Header from './profile-widgets/Header';
+import Constants from './common/ip';
+import StarRender from './common/star_render';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
-
-
+const x = Constants.ip
 
 export default class Login extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: 'Anonimo',
+      mail: '',
+      phone: 'blabla',
+      stars: 1,
+      user_id: 21,
+    }
+  }
+
   gosearch = () => {
       this.props.navigation.navigate('Search');
     }
   gochatlist = () => {
-      this.props.navigation.navigate('Chattabs');
+    this.props.navigation.navigate('YourChats');
     }
   goprofile = () => {
       this.props.navigation.navigate('Profile');
     }
   gooptions = () => {
-      this.props.navigation.navigate('Options')
+      this.props.navigation.navigate('Ofrecer')
+    } // no se para que era esto
+   goofrecer = () => {
+      this.props.navigation.navigate('Ofrecer')
+    }
+  completeProfile = () => {
+      this.props.navigation.navigate('Complete')
     }
 
+  changemode = () => {
+    this.props.navigation.navigate('ProfileWorker')
+    }
+
+  gohistory =() => {
+    this.props.navigation.navigate('ContractedHistory')
+  }
+
+  starfunction = () => {
+
+      fetch('http://'+x+':3000/ratings/obtener', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          rated_id: this.state.user_id,
+        })
+      })
+
+      .then((response) => response.json())
+      .then((res) => {
+
+
+
+        if (res.success === true) {
+          this.setState({
+            stars: res.message,
+          });
+
+        }
+        else {
+          alert('not success')
+        }
+      })
+      .done()
+      }
+
+  componentDidMount() {
+      this.loadinfo();
+      this.starfunction();
+    }
+
+  loadinfo() {
+
+    fetch('http://'+x+':3000/users/otheruser', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: this.props.navigation.state.params.user_id,
+      })
+    })
+
+    .then((response) => response.json())
+    .then((res) => {    
+
+      if (res.success === true) {
+        this.setState({
+          user_id: res.message[0].id,
+          username: res.message[1]+' '+res.message[2],
+        });
+      }
+      else {
+        alert('nadie ha ofrecido para esta categoria')
+      }
+    })
+    .done()
+
+    }
 
 
   render() {
     return (
       <View style = {styles.container2}>
-
+        <ScrollView>
         <ImageBackground style={styles.headerbackground} source={require('../img/background.jpg')}>
-
           <View style={styles.header}>
-            <View style={styles.row}>
-              <Icon name="star" color='#fff' size={25} style={{ padding:5, }} />
-              <Icon name="star" color='#fff' size={25} style={{ padding:5, }} />
-              <Icon name="star" color='#fff' size={25} style={{ padding:5, }} />
-              <Icon name="star-half" color='#fff' size={25} style={{ padding:5, }} />
-              <Icon name="star-border" color='#fff' size={25} style={{ padding:5, }} />
-            </View>
             <View style={styles.headerbar}>
 
               <View style={styles.profileextraWrapInvisible}>
@@ -60,52 +143,67 @@ export default class Login extends React.Component {
               </View>
 
               <View style={styles.profilepicWrap}>
-                <Image style={styles.profilepic} source={require('../img/image6.jpeg')} />
+                <Image style={styles.profilepic} source={require('../img/shadow.png')} />
               </View>
 
               <View style={styles.profileextraWrap}>
-                <TouchableOpacity onPress={this.gosearch}>
-                  <Icon name="settings" color='#fff' size={25} style={{ padding:15, }} />
+                <TouchableOpacity onPress={() => alert('aqui evaluar o comenzar chat')}>
+                  <Icon name="chat" color='#fff' size={25} style={{ padding:15, }} />
                 </TouchableOpacity>
               </View>
-
             </View>
-            
-            <Text style={styles.name}>Ignacia Eichholz</Text>
-            <Text style={styles.pos}>Muy simpatica</Text>
-            
 
-        </View>
+            <Text style={styles.name}>{this.state.username}</Text>
+            <TouchableOpacity onPress={this.starfunction}>
+              <StarRender stars={this.state.stars}/>
+            </TouchableOpacity>
+
+          
+          </View>
 
         </ImageBackground>
 
+        <View style={styles.information}>
 
-        <ScrollView>
-<View style={styles.information}>
+
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="mail" color='green' size={25} style={{ padding:15, }} />
+                  <Icon name="person" color='black' size={25} style={{ padding:15, }} />
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{'seba@gmail.com'}</Text>
+                  <Text style={styles.emailText}>{'Lastname'}</Text>
                 </View>
                 <View style={styles.emailNameColumn}>
-                    <Text style={styles.emailNameText}>{"Email"}</Text>
+                    <Text style={styles.emailNameText}>{"Apellido"}</Text>
                 </View>
               </View>
             </View>
 
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="phone" color='green' size={25} style={{ padding:15, }} />
+                  <Icon name="phone" color='black' size={25} style={{ padding:15, }} />
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{'73776543'}</Text>
+                  <Text style={styles.emailText}>{this.state.phone}</Text>
                 </View>
                 <View style={styles.emailNameColumn}>
-                    <Text style={styles.emailNameText}>{"Numero de telefono"}</Text>
+                    <Text style={styles.emailNameText}>{"Telefono"}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.container}>
+              <View style={styles.iconRow}>
+                  <Icon name="photo" color='black' size={25} style={{ padding:15, }} />
+              </View>
+              <View style={styles.emailRow}>
+                <View style={styles.emailColumn}>
+                  <Text style={styles.emailText}>{'Metropolitana'}</Text>
+                </View>
+                <View style={styles.emailNameColumn}>
+                    <Text style={styles.emailNameText}>{"Region"}</Text>
                 </View>
               </View>
             </View>
@@ -118,34 +216,24 @@ export default class Login extends React.Component {
 
             <View style={styles.container}>
               <View style={styles.iconRow}>
-                  <Icon name="work" color='green' size={25} style={{ padding:15, }} />
+                <Icon name="history" color='black' size={25} style={{ padding:15, }} />
               </View>
-              <View style={styles.emailRow}>
-                <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{'Clases particulares'}</Text>
+                <View style={styles.emailRow}>
+                  <TouchableOpacity onPress={this.gohistory}>
+                    <View style={styles.emailColumn}>
+                      <Text style={styles.emailText}>{'Trabajos contratados'}</Text>
+                    </View>
+                    <View style={styles.emailNameColumn}>
+                      <Text style={styles.emailNameText}>{"Historial"}</Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
-                <View style={styles.emailNameColumn}>
-                    <Text style={styles.emailNameText}>{"rubro"}</Text>
-                </View>
-              </View>
-            </View>
-
-            <View style={styles.container}>
-              <View style={styles.iconRow}>
-                  <Icon name="work" color='green' size={25} style={{ padding:15, }} />
-              </View>
-              <View style={styles.emailRow}>
-                <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{'Tatuador'}</Text>
-                </View>
-                <View style={styles.emailNameColumn}>
-                    <Text style={styles.emailNameText}>{"rubro"}</Text>
-                </View>
-              </View>
             </View>
 
           </View>
-      </ScrollView>
+        </ScrollView>
+
+        
 
         <View style={styles.bar}>
           <TouchableOpacity onPress={this.gosearch}>
@@ -154,7 +242,7 @@ export default class Login extends React.Component {
           <TouchableOpacity onPress={this.goprofile}>
             <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.gochatlist}>
+          <TouchableOpacity onPress={this.goofrecer}>
             <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
           </TouchableOpacity>
           <TouchableOpacity onPress={this.gochatlist}>
@@ -169,11 +257,7 @@ export default class Login extends React.Component {
 
     );
   }
-
-
-
 }
-
 
 const styles = StyleSheet.create({
   row: {
@@ -231,63 +315,42 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'center',
   },
-  profilepicWrap: {
-
-    width: 180,
-    height: 180,
-    borderRadius: 100,
-    borderColor: 'rgba(0,0,0,0.4)',
-    borderWidth: 16,
-    alignSelf: 'center',
-
-  },
   profileextraWrap: {
 
-    width: 60,
-    height: 60,
-    borderRadius: 35,
+    width: 57,
+    height: 57,
+    borderRadius: 55,
     borderColor: 'rgba(0,0,0,0.4)',
     borderWidth: 2,
     backgroundColor: 'rgba(0,0,0,0.6)',
     alignItems: 'center',
     justifyContent: 'center'
   },
+  changemode: {
+      marginBottom: 5,
+      height:40,
+      width: 40
+  },
   profileextraWrapInvisible: {
 
-    width: 60,
-    height: 60,
-    borderRadius: 35,
+    width: 57,
+    height: 57,
+    borderRadius: 55,
     borderColor: 'rgba(0,0,0,0)',
     borderWidth: 2,
     backgroundColor: 'rgba(0,0,0,0)',
     alignItems: 'center',
     justifyContent: 'center'
   },
-  profilepic: {
-    flex:1,
-    width: null,
-    alignSelf: 'stretch',
-    borderRadius: 100,
-    borderColor: '#fff',
-    borderWidth: 4,
-  },
   container2: {
     flex:1,
-    backgroundColor: '#000'
+    backgroundColor: '#fff'
   },
   bar: {
     borderTopColor: '#9C9C9C',
-    borderTopWidth: 4,
-    backgroundColor: '#F6F6F6',
+    borderTopWidth: 2,
+    backgroundColor: '#fff',
     flexDirection: 'row',
-    
-  },
-  headerbar: {
-
-    flexDirection: 'row',
-    alignSelf: 'center',
-
-    //width: (Dimensions.get('window').width) - 4,
     
   },
   barseparator: {
@@ -333,38 +396,55 @@ const styles = StyleSheet.create({
     width: (Dimensions.get('window').width / 2) - 4,
     backgroundColor: '#9C9C9C',
   },
-   headerbackground: {
+  //header
+  headerbackground: {
     flex: 1,
     width: null,
     alignSelf: 'stretch'
   },
   header: {
     flex: 1,
-
+    alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
     backgroundColor: 'rgba(0,0,0,0.5)'
 
   },
-  row:{
-    flexDirection:'row',
-    justifyContent: 'center'
+  profilepicWrap: {
+    width: 180,
+    height: 180,
+    borderRadius: 100,
+    borderColor: 'rgba(0,0,0,0.4)',
+    borderWidth: 16,
   },
-
+  profilepic: {
+    flex:1,
+    width: null,
+    alignSelf: 'stretch',
+    borderRadius: 100,
+    borderColor: '#fff',
+    borderWidth: 4,
+  },
   name: {
-    marginTop: 20,
+    marginTop: 5,
     fontSize: 16,
     color: '#fff',
     fontWeight: 'bold',
-    alignSelf: 'center'
   },
   pos: {
     fontSize: 14,
     color: '#0394c0',
     fontWeight: '300',
-    fontStyle: 'italic',
-    alignSelf: 'center'
-  }
+    fontStyle: 'italic'
+  },
+  headerbar: {
+
+    flexDirection: 'row',
+    alignSelf: 'center',
+
+    //width: (Dimensions.get('window').width) - 4,
+    
+  },
 
 });
 

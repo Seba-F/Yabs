@@ -23,25 +23,25 @@ function SinScroll(props) {
   let navigation = props.navigation
   if (personas.length>0){
     let ultimo = personas.pop()
+    let user_id = ultimo[1]
   return (
-
       <View>
         <View style={styles.container}>
           <View style={styles.emailRow}>
             <View style={styles.emailColumn}>
-              <Text style={styles.emailText}>{ultimo}</Text>
+              <Text style={styles.emailText}>{ultimo[0]}</Text>
             </View>
             <View style={styles.emailNameColumn}>
-                <Text style={styles.emailNameText}>{"Se pintan piscinas a domicilio"}</Text>
+                <Text style={styles.emailNameText}>{ultimo[2]}</Text>
             </View>
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('Evaluate')}>
             <Icon name="star" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('OtherProfile')}>
+          <TouchableOpacity onPress={() => navigation.navigate('OtherProfile', {user_id})}>
             <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <TouchableOpacity onPress={() => alert('no implementado')}>
             <Icon name="chat" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
         </View> 
@@ -73,7 +73,7 @@ export default class Login extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://'+x+':3000/jobs/obtener', {
+    fetch('http://'+x+':3000/jobs/findall', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -93,7 +93,8 @@ export default class Login extends React.Component {
         i = 0
         let a = this.state.ofertas;
         while (res.message[i]) {
-          a.push(res.message[i].title);
+          var lista = [res.message[i].title, res.message[i].id, res.message[i].name+' '+res.message[i].lastname]
+          a.push(lista);
           i += 1
         }
 

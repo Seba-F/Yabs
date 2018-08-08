@@ -34,13 +34,13 @@ function SinScroll(props) {
                 <Text style={styles.emailNameText}>{"Se pintan piscinas a domicilio"}</Text>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Evaluate')}>
+          <TouchableOpacity onPress={() => alert('no implementado')}>
             <Icon name="star" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('OtherProfile')}>
+          <TouchableOpacity onPress={() => alert('no implementado')}>
             <Icon name="account-circle" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <TouchableOpacity onPress={() => alert('no implementado')}>
             <Icon name="chat" color='#000' size={25} style={{ padding:15}} />
           </TouchableOpacity>
         </View> 
