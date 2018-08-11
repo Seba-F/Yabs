@@ -68,7 +68,6 @@ export default class Login extends React.Component {
       
 
     } catch (e) {
-      console.log('Error fetching user', e);
       this.setState({
           username: 'Cristian',
         });

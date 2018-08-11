@@ -47,37 +47,7 @@ export default class Login extends React.Component {
       this.props.navigation.navigate('Complete')
     }
   create = () => {
-
-
-    fetch('http://'+x+':3000/users/insert', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        lastname: this.state.lastname,
-        phone: this.state.phone,
-        password: this.state.password,
-        region: 'RM',
-
-      })
-    })
-
-    .then((response) => response.json())
-    .then((res) => {
-
-      if (res.success === true) {
-        AsyncStorage.setItem('user', this.state.name)
-        this.props.navigation.navigate('Profile');
-
-      }
-      else {
-        alert('not success')
-      }
-    })
-    .done()
+    alert('outch')
     }
 
   render() {
@@ -86,70 +56,47 @@ export default class Login extends React.Component {
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
           <View style={styles.content}>
 
-            <Text style={styles.logo}>- Completar perfil -</Text>
-
-            
+            <Text style={styles.logo}>- Completar perfil -</Text>          
 
               
               <View style={styles.inputContainer}>
               
-                <TextInput underlineColorAndroid='transparent' style={styles.input} 
-                  placeholder='Rut...                 ' onChangeText={ (name) => this.setState({name})}>
-                  </TextInput>
 
-              
-              <TouchableOpacity onPress={this.create} style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Actualizar</Text>
-              </TouchableOpacity>
-
-              </View>
-
-              <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
-                <Text style={styles.buttonText}>Seleccionar{"\n"}Carnet Identidad</Text>
-              </TouchableOpacity>
-
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
-                <Icon name="arrow-upward" color='#000' size={40} style={{ padding:1, }} />
+                <View style={{flexDirection: 'row'}}>
+                    <TextInput underlineColorAndroid='transparent' style={styles.input} 
+                    placeholder='Rut...' onChangeText={ (name) => this.setState({name})}>
+                    </TextInput>             
+                    <TouchableOpacity onPress={this.create} >
+                      <Icon name="file-upload" color='#000' size={40} style={{ padding:1, }} />
+                    </TouchableOpacity>
+                </View>
                 
-              </TouchableOpacity>
-              <Icon name="check-circle" color='#fff' size={40} style={{ padding:20, }} />
+
+                <View style={{flexDirection: 'row'}}>
+                  <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
+                    <Text style={styles.buttonText}>Seleccionar{"\n"}Carnet Identidad</Text>
+                  </TouchableOpacity>
+                    <TouchableOpacity onPress={this.create} style={styles.iconcontainer}>
+                      <Icon name="file-upload" color='#000' size={40} style={{ padding:1, }} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{flexDirection: 'row'}}>
+                  <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
+                    <Text style={styles.buttonText}> Seleccionar{"\n"}  Antecedentes   </Text>
+                  </TouchableOpacity>
+                    <TouchableOpacity onPress={this.create}  style={styles.iconcontainer}>
+                      <Icon name="file-upload" color='#000' size={40} style={{ padding:1, }} />
+                    </TouchableOpacity>
+              </View> 
+
               </View>
 
-              <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
-                <Text style={styles.buttonText}> Seleccionar{"\n"}  Antecedentes   </Text>
-              </TouchableOpacity>
-
-                <TouchableOpacity onPress={this.create} style={styles.buttonContainerNarrow}>
-                <Icon name="arrow-upward" color='#000' size={40} style={{ padding:1, }} />
-              </TouchableOpacity>
-              <Icon name="check-circle" color='#fff' size={40} style={{ padding:20, }} />
-              </View> 
+             
             </View>
 
             </ImageBackground>
-    
-       
-
-
-        <View style={styles.bar}>
-            <TouchableOpacity onPress={this.gosearch}>
-              <Icon name="search" color='#000' size={30} style={{ padding:25}} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.goprofile}>
-              <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.goofrecer}>
-               <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.gochatlist}>
-              <Icon name="chat" color='#000' size={30} style={{ padding:25}} />
-             </TouchableOpacity>
-             <TouchableOpacity onPress={this.gosearch}>
-              <Icon name="more-vert" color='#000' size={30} style={{ padding:25}} />
-             </TouchableOpacity>
-        </View>   
+          <BottomBar nav={this.props.navigation}/>    
       </View>                                                  
 
     );
@@ -195,7 +142,10 @@ const styles = StyleSheet.create({
       height: 40,
       padding: 10,
       marginBottom: 10,
+      marginRight: 30,
+      marginLeft: 20,
       backgroundColor: 'rgba(255, 255, 255, 1)',
+      width: 140,
     },
     buttonContainer: {
       margin: 20,
@@ -215,12 +165,25 @@ const styles = StyleSheet.create({
       height: 40,
       margin: 20,
       alignSelf: 'stretch',
-      padding: 20,
+      padding: 10,
+      marginRight: 0,
       borderColor: '#fff',
       borderWidth: 1,
       backgroundColor: 'rgba(255,255,255,0.6)',
       height:null,
       width:null,
+    },
+    iconcontainer: {
+      height: 40,
+      margin: 10,
+      alignSelf: 'stretch',
+      padding: 20,
+      borderColor: 'rgba(255,255,255,0)',
+      borderWidth: 1,
+      backgroundColor: 'rgba(255,255,255,0)',
+      height:null,
+      width:null,
+
 
     },
     registrarse: {
