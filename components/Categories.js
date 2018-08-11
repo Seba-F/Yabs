@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Constants from './common/ip';
+import BottomBar from './common/BottomBar';
 
 const x = Constants.ip
 
@@ -135,23 +136,7 @@ export default class Login extends React.Component {
         </ImageBackground>
 
 
-      <View style={styles.bar}>
-        <TouchableOpacity onPress={this.gosearch}>
-          <Icon name="search" color='#000' size={30} style={{ padding:25}} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.goprofile}>
-          <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.goofrecer}>
-          <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.gochatlist}>
-          <Icon name="chat" color='#000' size={30} style={{ padding:25}} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.gosearch}>
-          <Icon name="more-vert" color='#000' size={30} style={{ padding:25}} />
-        </TouchableOpacity>
-      </View>
+        <BottomBar nav={this.props.navigation}/>    
     </View>
     );
   }

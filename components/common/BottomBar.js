@@ -8,50 +8,38 @@ import {
   TouchableOpacity,
   SectionList,
   AsyncStorage,
+  Dimensions,
 } from 'react-native';
 import {StackNavigator} from 'react-navigation'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
-export default class Login extends React.Component {
+function BottomBar(props) {
 
-  gosearch = () => {
-      this.props.navigation.navigate('Search');
-    }
-  gochatlist = () => {
-      this.props.navigation.navigate('Chattabs');
-    }
-  goprofile = () => {
-      this.props.navigation.navigate('Profile');
-    }
-
-  render() {
-
-    return (
+  return (
 
       <View style={styles.bar}>
-
-        <TouchableOpacity onPress={this.gosearch}>
-          <Icon name="search" color='#000' size={30} style={{ padding:25}} />
+        <TouchableOpacity onPress={() => props.nav.navigate('Search')}>
+          <Icon name="search" color='#000' size={30} style={{ marginBottom: 10, marginTop: 10, marginLeft: (Dimensions.get('window').width / 15), marginRight: (Dimensions.get('window').width / 15),}} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.goprofile}>
-          <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
+        <TouchableOpacity onPress={() => props.nav.navigate('Profile')}>
+          <Icon name="account-circle" color='#000' size={30} style={{ marginBottom: 10, marginTop: 10, marginLeft: (Dimensions.get('window').width / 15), marginRight: (Dimensions.get('window').width / 15)}} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.gochatlist}>
-          <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
+        <TouchableOpacity onPress={() => props.nav.navigate('Ofrecer')}>
+          <Icon name="add-circle-outline" color='#000' size={30} style={{ marginBottom: 10, marginTop: 10, marginLeft: (Dimensions.get('window').width / 15), marginRight: (Dimensions.get('window').width / 15)}} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.gochatlist}>
-          <Icon name="chat" color='#000' size={30} style={{ padding:25}} />
+        <TouchableOpacity onPress={() => props.nav.navigate('YourChats')}>
+          <Icon name="chat" color='#000' size={30} style={{  marginBottom: 10, marginTop: 10, marginLeft: (Dimensions.get('window').width / 15), marginRight: (Dimensions.get('window').width / 15)}} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.gosearch}>
-          <Icon name="more-vert" color='#000' size={30} style={{ padding:25}} />
+        <TouchableOpacity onPress={() => alert('aqui hay otras opciones')}>
+          <Icon name="more-vert" color='#000' size={30} style={{ marginBottom: 10, marginTop: 10, marginLeft: (Dimensions.get('window').width / 15), marginRight: (Dimensions.get('window').width / 15)}} />
         </TouchableOpacity>
-       
       </View>
-
     );
-  }
+  
 }
+
+export default BottomBar
 
 const styles = StyleSheet.create({
   bar: {
