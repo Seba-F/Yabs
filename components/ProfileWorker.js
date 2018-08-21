@@ -95,7 +95,7 @@ export default class Login extends React.Component {
 
               <View style={styles.profileextraWrap}>
                 <TouchableOpacity onPress={this.changemode}>
-                  <Image style={styles.changemode} source={require('../img/whitehelmet.png')} style={{height:40, width:40}}/>
+                  <Image style={styles.changemode} source={require('../img/bluehelmet.png')} style={{height:40, width:40}}/>
                 </TouchableOpacity>
               </View>
             </View>
@@ -293,6 +293,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   profileextraWrap: {
+
     width: 57,
     height: 57,
     borderRadius: 55,
@@ -309,8 +310,8 @@ const styles = StyleSheet.create({
   },
   profileextraWrapInvisible: {
 
-    width: 57,
-    height: 57,
+    width: 100,
+    height: 100,
     borderRadius: 55,
     borderColor: 'rgba(0,0,0,0)',
     borderWidth: 2,

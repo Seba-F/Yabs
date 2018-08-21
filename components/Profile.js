@@ -19,7 +19,6 @@ import {StackNavigator} from 'react-navigation';
 
 import Header from './profile-widgets/Header';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import BottomBar from './common/BottomBar';
 
 export default class Login extends React.Component {
 
@@ -68,6 +67,7 @@ export default class Login extends React.Component {
       
 
     } catch (e) {
+      console.log('Error fetching user', e);
       this.setState({
           username: 'Cristian',
         });
@@ -191,7 +191,25 @@ export default class Login extends React.Component {
           </View>
         </ScrollView>
 
-        <BottomBar nav={this.props.navigation}/>    
+        
+
+        <View style={styles.bar}>
+          <TouchableOpacity onPress={this.gosearch}>
+            <Icon name="search" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.goprofile}>
+            <Icon name="account-circle" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.goofrecer}>
+            <Icon name="add-circle-outline" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.gochatlist}>
+            <Icon name="chat" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.gosearch}>
+            <Icon name="more-vert" color='#000' size={30} style={{ padding:25}} />
+          </TouchableOpacity>
+        </View>
 
       </View>
 

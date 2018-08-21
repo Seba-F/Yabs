@@ -18,10 +18,7 @@ import {
 import {StackNavigator} from 'react-navigation';
 
 import Header from './profile-widgets/Header';
-import Constants from './common/ip';
-import StarRender from './common/star_render';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-const x = Constants.ip
 
 export default class Login extends React.Component {
 
@@ -29,10 +26,6 @@ export default class Login extends React.Component {
     super(props);
     this.state = {
       username: 'Anonimo',
-      mail: '',
-      phone: 'blabla',
-      stars: 1,
-      user_id: 21,
     }
   }
 
@@ -67,42 +60,26 @@ export default class Login extends React.Component {
     this.props.navigation.navigate('ContractedHistory')
   }
 
-   starfunction = () => {
-
-      fetch('http://'+x+':3000/ratings/obtener', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          rated_id: this.state.user_id,
-        })
-      })
-
-      .then((response) => response.json())
-      .then((res) => {
-
-
-
-        if (res.success === true) {
-          alert(res.message)
-
-        }
-        else {
-          alert('not success')
-        }
-      })
-      .done()
-      }
-
   async loadusername() {
-      const user = await AsyncStorage.getItem('user');
-      const phone = await AsyncStorage.getItem('phone');      
-      this.setState({
+    
+
+    try {
+      const user = await AsyncStorage.getItem('user');      
+
+      if (user != null){
+        this.setState({
         username: user,
-        phone: phone,
+      
       });
+      }
+      
+
+    } catch (e) {
+      console.log('Error fetching user', e);
+      this.setState({
+          username: 'Cristian',
+        });
+    }
   }
 
   render() {
@@ -129,18 +106,20 @@ export default class Login extends React.Component {
             </View>
 
             <Text style={styles.name}>{this.state.username}</Text>
-            <TouchableOpacity onPress={this.starfunction}>
-              <StarRender stars={this.state.stars}/>
-            </TouchableOpacity>
 
+            <View style={styles.headerbar}>
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+            </View>
           
           </View>
 
         </ImageBackground>
 
         <View style={styles.information}>
-
-
             <View style={styles.container}>
               <View style={styles.iconRow}>
                   <Icon name="person" color='black' size={25} style={{ padding:15, }} />
@@ -161,7 +140,7 @@ export default class Login extends React.Component {
               </View>
               <View style={styles.emailRow}>
                 <View style={styles.emailColumn}>
-                  <Text style={styles.emailText}>{this.state.phone}</Text>
+                  <Text style={styles.emailText}>{'77675433'}</Text>
                 </View>
                 <View style={styles.emailNameColumn}>
                     <Text style={styles.emailNameText}>{"Telefono"}</Text>
@@ -308,8 +287,8 @@ const styles = StyleSheet.create({
   },
   profileextraWrapInvisible: {
 
-    width: 57,
-    height: 57,
+    width: 100,
+    height: 100,
     borderRadius: 55,
     borderColor: 'rgba(0,0,0,0)',
     borderWidth: 2,
