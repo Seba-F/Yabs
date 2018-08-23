@@ -132,6 +132,7 @@ export default class Login extends React.Component {
             <TouchableOpacity onPress={this.starfunction}>
               <StarRender stars={this.state.stars}/>
             </TouchableOpacity>
+            
 
           
           </View>

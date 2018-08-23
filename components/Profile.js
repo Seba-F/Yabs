@@ -100,11 +100,15 @@ export default class Login extends React.Component {
             <Text style={styles.name}>{this.state.username}</Text>
 
             <View style={styles.headerbar}>
+              <Text style={{ color: 'rgba(0,0,0,0)', fontSize:20, marginLeft:20}}> 110 </Text>
+              <Text style={{ color: 'rgba(0,0,0,0)'}}> puntos </Text>
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
               <Icon name="star" color='#fff' size={20} style={{ padding:5}} />
+              <Text style={{ color:'white', fontSize:20, marginLeft:20}}> 110 </Text>
+              <Text style={{ color:'white'}}> puntos </Text>
             </View>
           
           </View>
